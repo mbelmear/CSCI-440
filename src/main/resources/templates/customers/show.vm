@@ -1,0 +1,66 @@
+#parse('templates/header.vm')
+
+<h2>Customer</h2>
+
+<table>
+    <!-- Customer details -->
+    <thead>
+    <tr>
+        <th>Property</th>
+        <th>Value</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>FirstName</td>
+        <td>$!customer.FirstName</td>
+    </tr>
+    <tr>
+        <td>LastName</td>
+        <td>$!customer.LastName</td> <!-- Corrected typo in property name -->
+    </tr>
+    <tr>
+        <td>Email</td>
+        <td>$!customer.Email</td> <!-- Corrected typo in property name -->
+    </tr>
+    <tr>
+        <td>Rep</td>
+        <td><a href="/employees/$!customer.SupportRepId">$!customer.SupportRep.Email</a> </td>
+    </tr>
+    </tbody>
+</table>
+
+<h4>Invoices</h4>
+
+<!-- Invoices table -->
+<table>
+    <thead>
+    <tr>
+        <th>Invoice ID</th>
+        <th>Billing Address</th>
+        <th>Billing City</th>
+        <th>Billing State</th>
+        <th>Billing Country</th>
+        <th>Billing Postal Code</th>
+        <th>Total</th>
+    </tr>
+    </thead>
+    <tbody>
+        #foreach ($invoice in $customer.getInvoices())
+        <tr>
+            <td><a href="/invoices/$invoice.InvoiceId">$invoice.InvoiceId</a></td>
+            <td>$invoice.BillingAddress</td>
+            <td>$invoice.BillingCity</td>
+            <td>$invoice.BillingState</td>
+            <td>$invoice.BillingCountry</td>
+            <td>$invoice.BillingPostalCode</td>
+            <td>$invoice.Total</td>
+        </tr>
+        #end
+    </tbody>
+</table>
+
+<a href="/customers/$customer.CustomerId/edit">[Edit Customer]</a>
+<a href="/customers/$customer.CustomerId/delete">[Delete Customer]</a>
+
+#parse('templates/footer.vm')
