@@ -1,0 +1,3 @@
+Chinook DB Web Application: 
+
+Developed a robust full-stack web application using the Chinook.db database schema from the SQLite Tutorial, leveraging Java for backend logic, SQLite for database management, and the Velocity Template Language for the front end. The application enables users to perform basic CRUD operations as well as some advanced database operations, such as searching, via a simple front-end interface. Additionally, it integrates a Redis cache for enhanced performance. The application is architected using the Model-View-Controller (MVC) design pattern to ensure security and maintainability.
